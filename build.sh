@@ -9,7 +9,7 @@ export JAVA_HOME=/Users/jonnyzzz/Library/Java/JavaVirtualMachines/corretto-11.0.
 
 ../jonnyzzz-logo/gradlew :logo-web:build
 
-rsync -ai --delete  ../jonnyzzz-logo/logo-web/build/distributions/** .
+rsync -ai ../jonnyzzz-logo/logo-web/build/distributions/** .
 git add -A .
 
 
