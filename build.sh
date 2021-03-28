@@ -4,17 +4,22 @@
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 set -e -x -u
 
-HOME="$(pwd)"
-ROOT="$(cd ../jonnyzzz-logo && pwd)"
+JOGO_HOME="$(pwd)"
+JOGO_ROOT="$(cd ../jonnyzzz-logo && pwd)"
 
 export JAVA_HOME=/Users/jonnyzzz/Library/Java/JavaVirtualMachines/corretto-11.0.10/Contents/Home
 
+## use Docker container to avoid breaking local development
 
-cd $ROOT 
-./gradlew clean :logo-web:build
-cd $HOME
+cd $JOGO_ROOT 
+rm -rf build
+rm -rf logo-web/build
 
-rsync -ai $ROOT/logo-web/build/distributions/ $HOME
+./gradlew clean
+./gradlew :logo-web:build
+cd $JOGO_HOME
+
+rsync -ai $JOGO_ROOT/logo-web/build/distributions/ $JOGO_HOME
 git add -A .
 
 
