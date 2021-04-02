@@ -13,13 +13,13 @@ export JAVA_HOME=/Users/jonnyzzz/Library/Java/JavaVirtualMachines/corretto-11.0.
 
 cd $JOGO_ROOT 
 rm -rf build
-rm -rf logo-web/build
+rm -rf jogo-web/build
 
 ./gradlew clean
-./gradlew :logo-web:build
+./gradlew :jogo-web:build
 cd $JOGO_HOME
 
-rsync -ai $JOGO_ROOT/logo-web/build/distributions/ $JOGO_HOME
+rsync -ai $JOGO_ROOT/jogo-web/build/distributions/ $JOGO_HOME
 git add -A .
 
 
